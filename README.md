@@ -30,3 +30,5 @@ Outras informações importantes estão mais afrente no log:
 Aqui podemos acompanhar o progresso da "API DE CORTE" e em seguida o feedback do resultado de movimentação e, por fim, os dados que poderiam ser postado na API da GloboPlay em resposta ao requisito deles.
 
 Um diferencial extra deste trabalho foi a construção de um log "log_file_name.log" onde todas as informações que foram postados do log ficam salvas, o que facilita a manutenção e o debug da ferramenta:
+
+![Tela quarta](https://github.com/Lucas-Armand/-DESAFIO-API---Infra-GLOBOPLAY-/blob/master/docs/imgs/Screenshot%20from%202019-02-21%2002-42-43.png)
