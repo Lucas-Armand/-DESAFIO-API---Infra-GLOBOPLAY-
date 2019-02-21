@@ -1,4 +1,4 @@
-﻿Log Output - Marina Text AsRun v1.0
+Log Output - Marina Text AsRun v1.0
 Filename: 'B) REDE - ASRUN 20181216_000000 Marina.txt'
 Channel: 'A) REDE HD'
 From: 16/12/18 01:00:00 to 17/12/18 01:00:00
