@@ -1,5 +1,5 @@
 # [DESAFIO] API - Infra GLOBOPLAY 
-Aplicação em Python para atender o desafio de "[Infraestrutura de Integração GloboPlay](https://github.com/Lucas-Armand/-DESAFIO-API---Infra-GLOBOPLAY-/blob/master/docs/DESAFIO%20DE%20INTEGRA%C3%87%C3%83O.pdf)". Esse projeto é de infraestrutura, ou seja, tem como objetivo intermediar outras aplicações. O objetivo é, dado um diretório específico (watchdog) onde são colocados arquivos com dados de entrada que devem ser operados através de APIs, o programa monitóra o diretório e, para cada arquivo adicionado, realiza as computações necessárias.
+Aplicação em Python para atender o desafio de "[Infraestrutura de Integração GloboPlay](https://github.com/Lucas-Armand/-DESAFIO-API---Infra-GLOBOPLAY-/blob/master/docs/DESAFIO%20DE%20INTEGRA%C3%87%C3%83O.pdf)". Esse projeto é de infraestrutura, ou seja, tem como objetivo intermediar outras aplicações. O objetivo é, dado um diretório específico (watchdog) onde são colocados arquivos com dados de entrada que devem ser operados através de APIs, o programa monitora o diretório e, para cada arquivo adicionado, realiza as computações necessárias.
 
 ## Instalação
 
@@ -30,5 +30,3 @@ Outras informações importantes estão mais afrente no log:
 Aqui podemos acompanhar o progresso da "API DE CORTE" e em seguida o feedback do resultado de movimentação e, por fim, os dados que poderiam ser postado na API da GloboPlay em resposta ao requisito deles.
 
 Um diferencial extra deste trabalho foi a construção de um log "log_file_name.log" onde todas as informações que foram postados do log ficam salvas, o que facilita a manutenção e o debug da ferramenta:
-
-![log](https://github.com/Lucas-Armand/-DESAFIO-API---Infra-GLOBOPLAY-/blob/master/docs/imgs/Screenshot%20from%202019-02-21%2002-42-43.png)
