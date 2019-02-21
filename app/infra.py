@@ -6,9 +6,11 @@ from random import random
 import pandas as pd
 import logging
 import datetime
+import shutil
 import time
 import glob
 import re
+import os
 
 MOCK = {'id':1,'N':0,'n':0}
 
@@ -120,7 +122,7 @@ def register_inputs(txts_files_list,conn_files,conn_lines):
     return result
 
 def api_corte_MOCK1(start_time,end_time,duration,path):
-    # Essa função e um mock da api de corte, gostaria de ter feito ela
+    # Essa funcao e um mock da api de corte, gostaria de ter feito ela
     # direitinho no django mas nao deu... De toda maneira vou tentar explicar a
     # logica:
 
@@ -136,9 +138,38 @@ def api_corte_MOCK1(start_time,end_time,duration,path):
         # Para simular isso eu defeni uma variavel global "MOCK"
         datajson = {'id':MOCK['id']}
         MOCK['id']+=1
-        MOCK['N'] = (random()*10)+5 #Numero de tentativas necessarias
-        MOCK['n'] = 0
+        MOCK['N'] = int(random()*10)+1 #Numero de tentativas necessarias
+        MOCK['n'] = 1                  #Numero de tentativas efetuadas
         return datajson
+
+def api_corte_MOCK2(ID):
+    # Essa funcao e um mock da segunda funcionalidade da api de corte, ela
+    # recebe um 'ID' e retorna uma 'porcentagem' de conclusao da tarefa. 
+    # Caso a tarefa saja concluida ela cria um arquivo com nome "[ID].MOCKVIDEO
+    # no diretorio:
+
+    if MOCK['N'] == MOCK['n']:
+        f= open(str(ID)+".MOCKVIDEO","w+")
+        f.close()
+        return True
+    else:
+       percent = float(MOCK['n'])/MOCK['N']
+       Percent = int(percent*100)
+       MOCK['n']+=1
+       return Percent
+
+def moveVideo(name,path):
+    local_path = os.getcwd()
+    file_name = glob.glob('*.MOCKVIDEO')[0]
+    shutil.move(local_path+'/'+file_name, local_path+path)
+
+def api_globoplay_MOCK(name,duration,title):
+    # Essa funcao e um mock, de um request post para uma api de dados, 
+    # para representar sua funcionalidade sera feito um print dos dados que
+    # deveriam ser postatos:
+    print({'name':name,'duration':duration,'title':title})
+
+
 
 # PROGRAM START: #
 
@@ -176,9 +207,21 @@ def main():
                                            inp[1]['end_time'],
                                            inp[1]['duration'],
                                            path = '/.')
+                    # Deveria comentar isso aqui melhor, mas estou com muito
+                    # sono... Isso só passa as informacoes entre os mocks:
                     if data != None:
                         logging.warning('REQUISIÇÃO ENVIADA PARA API DE CORTE')
-                        result = api_corte_MOCK2(data['id'])
+                        result = False
+                        while result is not True:
+                            result = api_corte_MOCK2(data['id'])
+                            logging.warning('processamento: '+str(result)+'%')
+                            time.sleep(0.2)
+                        logging.warning('"'+str(data['id'])+'.MOCKVIDEO" salvo')
+                        moveVideo(str(data['id'])+'.MOCKVIDEO','/video_final_location')
+                        logging.warning('Video movido para pasta destino')
+                        api_globoplay_MOCK(str(data['id'])+'.MOCKVIDEO',
+                                           inp[1]['duration'],
+                                           inp[1]['title'])
 
                 
     except KeyboardInterrupt:
